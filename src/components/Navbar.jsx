@@ -1,12 +1,22 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-
+import React, { useState } from 'react';
 import NavLinks from './NavLinks';
+import Menubar from './Menubar'; // Menubar ইমপোর্ট করা হয়েছে
+
+import { MdMenu } from 'react-icons/md';
+import { RxCross2 } from 'react-icons/rx';
 
 const Navbar = () => {
+  // useState এর সঠিক ব্যবহার [state, setState]
+  const [isActive, setIsActive] = useState(false);
+
   return (
     <header className="bg-sky-100 py-5 sticky top-0 z-50">
       <nav className="flex items-center justify-between w-10/12 mx-auto">
+        {/* Logo Section */}
         <div className="flex items-center gap-1 cursor-pointer">
           <Image src={'/logo.png'} alt="logo" width={50} height={50} />
           <h1 className="text-lg md:text-2xl font-bold text-gray-800">
@@ -14,6 +24,7 @@ const Navbar = () => {
           </h1>
         </div>
 
+        {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-6">
           <li>
             <NavLinks href="/">Home</NavLinks>
@@ -26,6 +37,7 @@ const Navbar = () => {
           </li>
         </ul>
 
+        {/* Desktop Auth Buttons */}
         <div className="hidden md:flex items-center gap-4">
           <Link
             href={`/login`}
@@ -40,7 +52,25 @@ const Navbar = () => {
             Register
           </Link>
         </div>
+
+        {/* Mobile Menu Icon */}
+        <div className="md:hidden flex items-center">
+          {isActive ? (
+            <RxCross2
+              className="text-3xl cursor-pointer text-gray-700"
+              onClick={() => setIsActive(false)}
+            />
+          ) : (
+            <MdMenu
+              className="text-3xl cursor-pointer text-gray-700"
+              onClick={() => setIsActive(true)}
+            />
+          )}
+        </div>
       </nav>
+
+      {/* Mobile Menubar - এখানে isActive অনুযায়ী মেনু দেখাবে */}
+      {isActive && <Menubar setIsActive={setIsActive} />}
     </header>
   );
 };
