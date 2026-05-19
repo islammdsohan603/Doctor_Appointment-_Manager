@@ -1,3 +1,4 @@
+import { json } from "better-auth";
 
 
 export const getData = async () => {
@@ -17,4 +18,22 @@ export const getSingleDoctorsData = async (id) => {
   const res = await fetch(`http://localhost:5000/doctors/${id}`)
   const data = await res.json()
   return data
+}
+
+export const boctorsBooking = async (bookingData) => {
+  const res = await fetch('http://localhost:5000/bookings', {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(bookingData),
+
+
+  });
+
+  const data = await res.json()
+
+  return data
+
+
 }

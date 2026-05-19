@@ -1,14 +1,35 @@
 'use client';
 
+import { boctorsBooking } from '@/db/data';
+import { authClient } from '@/lib/auth-client';
 import { Button, Input, Label, Modal, Surface, TextField } from '@heroui/react';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 
 const BookingButton = ({ data }) => {
-  const handleBookingAppiontment = e => {
-    e.preventDefult();
-  };
+  const handleBookingAppiontment = async e => {
+    e.preventDefault();
 
+    const formData = new FormData(e.currentTarget);
+
+    const usersData = Object.fromEntries(formData.entries());
+
+    const bookingInfo = {
+      ...usersData,
+      patientId: data._id,
+      patientName: data.name,
+      patientGender: data.gender,
+    };
+
+    const result = await boctorsBooking(bookingInfo);
+
+    if (result.insertedId) {
+      toast.success('Appointment Booked Successfully');
+      e.target.reset();
+    } else {
+      toast.error('Booking Failed');
+    }
+  };
   return (
     <div>
       <Modal>
@@ -61,7 +82,10 @@ const BookingButton = ({ data }) => {
                   variant="default"
                   className="rounded-2xl bg-white shadow-sm border border-gray-100"
                 >
-                  <form className="grid grid-cols-1 md:grid-cols-2 gap-5 p-6">
+                  <form
+                    onSubmit={handleBookingAppiontment}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-5 p-6"
+                  >
                     {/* Email */}
                     <TextField className="w-full">
                       <Label className="mb-2 block text-sm font-semibold text-gray-700">
@@ -69,6 +93,7 @@ const BookingButton = ({ data }) => {
                       </Label>
 
                       <Input
+                        name="email"
                         required
                         type="email"
                         placeholder="Enter your email"
@@ -83,6 +108,7 @@ const BookingButton = ({ data }) => {
                       </Label>
 
                       <Input
+                        name="name"
                         required
                         type="text"
                         placeholder="Full name"
@@ -97,6 +123,7 @@ const BookingButton = ({ data }) => {
                       </Label>
 
                       <Input
+                        name="phone"
                         type="tel"
                         placeholder="+8801XXXXXXXXX"
                         className="rounded-xl"
@@ -109,7 +136,10 @@ const BookingButton = ({ data }) => {
                         Gender
                       </Label>
 
-                      <select className="w-full h-11 px-4 rounded-xl border border-gray-200 outline-none focus:border-blue-500 bg-white">
+                      <select
+                        name="gender"
+                        className="w-full h-11 px-4 rounded-xl border border-gray-200 outline-none focus:border-blue-500 bg-white"
+                      >
                         <option>Male</option>
                         <option>Female</option>
                         <option>Other</option>
@@ -122,7 +152,11 @@ const BookingButton = ({ data }) => {
                         Appointment Date
                       </Label>
 
-                      <Input type="date" className="rounded-xl" />
+                      <Input
+                        name="appointmentDate"
+                        type="date"
+                        className="rounded-xl"
+                      />
                     </TextField>
 
                     {/* Time */}
@@ -131,7 +165,11 @@ const BookingButton = ({ data }) => {
                         Appointment Time
                       </Label>
 
-                      <Input type="time" className="rounded-xl" />
+                      <Input
+                        name="appointmentTime"
+                        type="time"
+                        className="rounded-xl"
+                      />
                     </TextField>
 
                     {/* Reason */}
@@ -141,6 +179,7 @@ const BookingButton = ({ data }) => {
                       </Label>
 
                       <textarea
+                        name="reason"
                         rows={4}
                         placeholder="Describe your problem..."
                         className="w-full rounded-2xl border border-gray-200 p-4 outline-none focus:border-blue-500 resize-none"
@@ -150,7 +189,7 @@ const BookingButton = ({ data }) => {
                     {/* Button */}
                     <div className="md:col-span-2">
                       <Button
-                        onClick={handleBookingAppiontment}
+                        type="submit"
                         className="w-full py-6 rounded-2xl bg-linear-to-r from-cyan-500 to-blue-600 text-white font-semibold text-lg hover:scale-[1.02] transition-all duration-300 shadow-lg"
                       >
                         Confirm Booking

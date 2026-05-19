@@ -79,7 +79,7 @@ const Whychoose = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-gray-500 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
           >
-            We've reimagined the patient journey to provide a seamless,
+            We ve reimagined the patient journey to provide a seamless,
             high-performance experience that prioritizes your health outcomes
             above all else.
           </motion.p>
