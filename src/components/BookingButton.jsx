@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { toast } from 'react-toastify';
 
 const BookingButton = ({ data }) => {
-  const handleBookingAppiontment = () => {
-    toast.success(data.name);
+  const handleBookingAppiontment = e => {
+    e.preventDefult();
   };
 
   return (
