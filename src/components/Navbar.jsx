@@ -10,11 +10,10 @@ import { MdMenu } from 'react-icons/md';
 import { RxCross2 } from 'react-icons/rx';
 
 const Navbar = () => {
-  // useState এর সঠিক ব্যবহার [state, setState]
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <header className="bg-sky-100 py-5 sticky top-0 z-50">
+    <header className=" bg-sky-100 shadow-md py-5 sticky top-0 z-50">
       <nav className="flex items-center justify-between w-10/12 mx-auto">
         {/* Logo Section */}
         <div className="flex items-center gap-1 cursor-pointer">
@@ -69,7 +68,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menubar - এখানে isActive অনুযায়ী মেনু দেখাবে */}
       {isActive && <Menubar setIsActive={setIsActive} />}
     </header>
   );

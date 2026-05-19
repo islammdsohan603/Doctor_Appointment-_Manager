@@ -15,7 +15,7 @@ const NavLinks = ({ href, children }) => {
       }`}
     >
       {children}
-      {/* Active indicator line animation */}
+
       <span
         className={`absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transition-all duration-300 ${
           isActive ? 'scale-x-100' : 'scale-x-0'
