@@ -1,5 +1,6 @@
 'use client';
 
+import SoscalLogin from '@/components/SoscalLogin';
 import { authClient } from '@/lib/auth-client';
 import { Check } from '@gravity-ui/icons';
 
@@ -194,7 +195,7 @@ const Loginpage = () => {
             </div>
 
             {/* Footer */}
-            <p className="text-center text-slate-500 mt-4">
+            <p className="text-center text-slate-500 my-4">
               Don&apos;t have an account?{' '}
               <Link href="/signup">
                 <span className="text-cyan-600 font-semibold hover:underline">
@@ -203,6 +204,10 @@ const Loginpage = () => {
               </Link>
             </p>
           </Form>
+
+          <div>
+            <SoscalLogin />
+          </div>
         </div>
       </div>
     </section>
