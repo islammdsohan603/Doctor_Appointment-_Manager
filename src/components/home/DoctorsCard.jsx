@@ -33,11 +33,11 @@ const DoctorsCard = ({ doctor }) => {
         </h3>
 
         <p className="text-blue-500 text-sm font-medium mb-4">
-          {doctor.specialization || 'Senior Specialist'}
+          {doctor.specialty || 'Senior Specialist'}
         </p>
 
         <Link
-          href={`/doctor/${doctor._id}`}
+          href={`/doctors/${doctor._id}`}
           className="block w-full text-center py-3 bg-gray-50 text-gray-700 font-semibold rounded-xl transition-all duration-300 hover:bg-blue-600 hover:text-white shadow-sm"
         >
           View Profile

@@ -1,6 +1,6 @@
 import { getData } from '@/db/data';
 import Link from 'next/link';
-import React from 'react';
+import React, { Suspense } from 'react';
 import DoctorsCard from './DoctorsCard';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
@@ -22,7 +22,7 @@ const Doctors = async () => {
         </div>
 
         <Link
-          href={`/doctors`}
+          href={`/allappointment`}
           className="group flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-all duration-300"
         >
           View All Doctors
