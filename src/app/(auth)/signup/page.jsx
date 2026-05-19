@@ -1,5 +1,6 @@
 'use client';
 
+import { authClient } from '@/lib/auth-client';
 import { Check } from '@gravity-ui/icons';
 import {
   Button,
@@ -11,9 +12,32 @@ import {
   TextField,
 } from '@heroui/react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 const SignUpPage = () => {
-  const onSubmit = () => {};
+  const router = useRouter();
+
+  const onSubmit = async e => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const users = Object.fromEntries(formData.entries());
+
+    const { data, error } = await authClient.signUp.email({
+      name: users.name,
+      email: users.email,
+      password: users.password,
+      image: users.image,
+    });
+
+    if (data) {
+      toast.success('Account Successfull created 🎉');
+      router.push('/');
+    }
+    if (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-linear-to-br from-cyan-50 via-white to-blue-100 px-4 py-10">
