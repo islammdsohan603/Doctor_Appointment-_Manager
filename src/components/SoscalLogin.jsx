@@ -11,11 +11,11 @@ const SoscalLogin = () => {
   const handleSignin = async () => {
     const data = await authClient.signIn.social({
       provider: 'google',
+      callbackURL: '/',
     });
 
     if (data) {
       toast.success('SignIn Successful');
-      router.push('/');
     } else {
       toast.error('faild ');
     }

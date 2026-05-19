@@ -32,7 +32,7 @@ const SignUpPage = () => {
 
     if (data) {
       toast.success('Account Successfull created 🎉');
-      router.push('/');
+      router.push('/login');
     }
     if (error) {
       toast.error(error.message);
