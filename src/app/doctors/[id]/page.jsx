@@ -1,5 +1,7 @@
+import BookingButton from '@/components/BookingButton';
 import { getSingleDoctorsData } from '@/db/data';
 import Image from 'next/image';
+
 import {
   FaStar,
   FaLocationDot,
@@ -14,12 +16,17 @@ const DoctorsDetailsPage = async ({ params }) => {
   const data = await getSingleDoctorsData(id);
 
   return (
-    <section className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-cyan-950 py-10 lg:py-16">
+    <section className="min-h-screen bg-linear-to-br from-slate-50 via-cyan-50 to-blue-50 py-10 lg:py-20 overflow-hidden">
       <div className="w-11/12 lg:w-10/12 mx-auto">
-        {/* Main Card */}
-        <div className="bg-white/10 backdrop-blur-xl border border-white/10 rounded-[2rem] overflow-hidden shadow-2xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 p-5 sm:p-8 lg:p-12">
-            {/* Left Side Image */}
+        {/* Main Container */}
+        <div className="relative bg-white/70 backdrop-blur-2xl border border-white rounded-[2.5rem] shadow-[0_20px_80px_rgba(0,0,0,0.08)] overflow-hidden">
+          {/* Glow Effects */}
+          <div className="absolute -top-24 -left-24 w-72 h-72 bg-cyan-300/30 blur-3xl rounded-full"></div>
+
+          <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-blue-300/30 blur-3xl rounded-full"></div>
+
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 p-5 sm:p-8 lg:p-14">
+            {/* LEFT SIDE */}
             <div className="relative">
               {/* Image Box */}
               <div className="relative w-full h-[320px] sm:h-[450px] md:h-[550px] lg:h-full min-h-[500px] rounded-[2rem] overflow-hidden bg-linear-to-br from-slate-800 to-slate-900 border border-white/10">
@@ -48,84 +55,99 @@ const DoctorsDetailsPage = async ({ params }) => {
                 <div className="absolute bottom-4 right-4 bg-cyan-500/20 backdrop-blur-md px-5 py-3 rounded-2xl border border-cyan-400/20">
                   <p className="text-cyan-300 text-sm">Experience</p>
 
-                  <h3 className="text-white font-bold text-lg">
+                  <h3 className="text-black font-bold text-lg">
                     {data.experience}
                   </h3>
                 </div>
               </div>
             </div>
 
-            {/* Right Side */}
+            {/* RIGHT SIDE */}
             <div className="flex flex-col justify-center">
               {/* Doctor Name */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                {data.name}
-              </h1>
+              <div>
+                <p className="text-cyan-600 font-semibold uppercase tracking-[4px] text-sm mb-3">
+                  Trusted Specialist
+                </p>
 
-              {/* Specialty */}
-              <p className="text-cyan-400 text-lg sm:text-xl font-semibold mt-3">
-                {data.specialty}
-              </p>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-800 leading-tight">
+                  {data.name}
+                </h1>
+
+                <p className="text-cyan-600 text-xl font-semibold mt-4">
+                  {data.specialty}
+                </p>
+              </div>
 
               {/* Description */}
-              <p className="text-gray-300 mt-6 leading-relaxed text-base sm:text-lg">
+              <p className="text-slate-500 leading-relaxed text-lg mt-8">
                 {data.description}
               </p>
 
               {/* Info Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-10">
                 {/* Hospital */}
-                <div className="bg-white/10 border border-white/10 p-5 rounded-2xl hover:-translate-y-1 transition-all duration-300">
-                  <div className="flex items-center gap-3 text-cyan-400 mb-2">
+                <div className="group bg-white/80 border border-white rounded-3xl p-6 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+                  <div className="w-14 h-14 rounded-2xl bg-cyan-100 flex items-center justify-center text-cyan-600 text-xl mb-4 group-hover:scale-110 transition-all duration-300">
                     <FaHospital />
-                    <h3 className="font-semibold">Hospital</h3>
                   </div>
 
-                  <p className="text-gray-300">{data.hospital}</p>
+                  <h3 className="font-bold text-slate-800 text-lg">Hospital</h3>
+
+                  <p className="text-slate-500 mt-2">{data.hospital}</p>
                 </div>
 
                 {/* Location */}
-                <div className="bg-white/10 border border-white/10 p-5 rounded-2xl hover:-translate-y-1 transition-all duration-300">
-                  <div className="flex items-center gap-3 text-pink-400 mb-2">
+                <div className="group bg-white/80 border border-white rounded-3xl p-6 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+                  <div className="w-14 h-14 rounded-2xl bg-pink-100 flex items-center justify-center text-pink-500 text-xl mb-4 group-hover:scale-110 transition-all duration-300">
                     <FaLocationDot />
-                    <h3 className="font-semibold">Location</h3>
                   </div>
 
-                  <p className="text-gray-300">{data.location}</p>
+                  <h3 className="font-bold text-slate-800 text-lg">Location</h3>
+
+                  <p className="text-slate-500 mt-2">{data.location}</p>
                 </div>
 
                 {/* Experience */}
-                <div className="bg-white/10 border border-white/10 p-5 rounded-2xl hover:-translate-y-1 transition-all duration-300">
-                  <div className="flex items-center gap-3 text-purple-400 mb-2">
+                <div className="group bg-white/80 border border-white rounded-3xl p-6 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+                  <div className="w-14 h-14 rounded-2xl bg-purple-100 flex items-center justify-center text-purple-500 text-xl mb-4 group-hover:scale-110 transition-all duration-300">
                     <FaClock />
-                    <h3 className="font-semibold">Experience</h3>
                   </div>
 
-                  <p className="text-gray-300">{data.experience}</p>
+                  <h3 className="font-bold text-slate-800 text-lg">
+                    Experience
+                  </h3>
+
+                  <p className="text-slate-500 mt-2">{data.experience}</p>
                 </div>
 
                 {/* Fee */}
-                <div className="bg-white/10 border border-white/10 p-5 rounded-2xl hover:translate-y-[-4px] transition-all duration-300">
-                  <div className="flex items-center gap-3 text-green-400 mb-2">
+                <div className="group bg-white/80 border border-white rounded-3xl p-6 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+                  <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center text-green-500 text-xl mb-4 group-hover:scale-110 transition-all duration-300">
                     <FaMoneyBillWave />
-                    <h3 className="font-semibold">Consultation Fee</h3>
                   </div>
 
-                  <p className="text-gray-300 font-semibold">৳ {data.fee}</p>
+                  <h3 className="font-bold text-slate-800 text-lg">
+                    Consultation Fee
+                  </h3>
+
+                  <p className="text-slate-500 mt-2 text-xl font-bold">
+                    ৳ {data.fee}
+                  </p>
                 </div>
               </div>
 
               {/* Availability */}
-              <div className="mt-8">
-                <h2 className="text-2xl font-bold text-white mb-4">
-                  Available Time
+              <div className="mt-10">
+                <h2 className="text-2xl font-bold text-slate-800 mb-5">
+                  Available Schedule
                 </h2>
 
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-4">
                   {data.availability.map((time, index) => (
                     <span
                       key={index}
-                      className="px-5 py-3 rounded-full bg-cyan-500/10 border border-cyan-400/20 text-cyan-300 font-medium text-sm sm:text-base"
+                      className="px-6 py-3 rounded-full bg-linear-to-r from-cyan-500 to-blue-500 text-white font-semibold shadow-lg hover:scale-105 transition-all duration-300"
                     >
                       {time}
                     </span>
@@ -133,11 +155,9 @@ const DoctorsDetailsPage = async ({ params }) => {
                 </div>
               </div>
 
-              {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mt-10">
-                <button className="px-8 py-4 rounded-2xl bg-linear-to-r from-cyan-500 to-blue-600 text-white font-semibold shadow-lg hover:scale-105 transition-all duration-300">
-                  Book Appointment
-                </button>
+              {/* Button */}
+              <div className="mt-10">
+                <BookingButton data={data} />
               </div>
             </div>
           </div>
