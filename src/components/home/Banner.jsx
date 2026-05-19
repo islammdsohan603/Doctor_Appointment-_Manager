@@ -102,9 +102,10 @@ const Banner = () => {
           >
             <div className="absolute inset-0 bg-white rounded-full blur-3xl opacity-30 scale-75"></div>
             <Image
-              src={'/banner.png'}
+              src="/banner.png"
               alt="Doctor Banner"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-contain drop-shadow-2xl"
               priority
             />

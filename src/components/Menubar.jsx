@@ -13,7 +13,7 @@ const Menubar = ({ setIsActive }) => {
 
   const menuItems = [
     { name: 'Home', href: '/' },
-    { name: 'All Appointment', href: '/appointments' },
+    { name: 'All Appointment', href: '/allappointment' },
     { name: 'Dashboard', href: '/dashboard' },
   ];
 
@@ -38,7 +38,7 @@ const Menubar = ({ setIsActive }) => {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="absolute top-full left-0 w-full bg-sky-100 shadow-lg md:hidden flex flex-col items-center py-6 gap-6 z-40"
+      className="absolute left-0 top-full z-40 flex w-full flex-col items-center gap-6 bg-white/95 py-6 shadow-lg backdrop-blur-xl md:hidden"
     >
       <ul className="flex flex-col items-center gap-6">
         {menuItems.map((item, index) => (
@@ -54,11 +54,7 @@ const Menubar = ({ setIsActive }) => {
         variants={itemVariants}
         className="flex flex-col items-center gap-4 w-10/12"
       >
-        {isPending ? (
-          <div>
-            <h1>loading</h1>
-          </div>
-        ) : users ? (
+        {users ? (
           <div className="flex items-center gap-2">
             <Avatar>
               <Avatar.Image alt={users?.name} src={users?.image} />
@@ -70,7 +66,7 @@ const Menubar = ({ setIsActive }) => {
                 await authClient.signOut();
                 router.push('/');
               }}
-              className="bg-red-500 px-4 py-1 rounded-3xl ext-xs font-semibold cursor-pointer hover:bg-red-700 duration-500"
+              className="rounded-3xl cursor-pointer bg-rose-500 px-4 py-1 text-xs font-semibold text-white duration-500 hover:bg-rose-700"
             >
               Logout
             </button>

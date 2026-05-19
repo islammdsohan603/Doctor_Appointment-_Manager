@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useSyncExternalStore } from 'react';
 import NavLinks from './NavLinks';
 import Menubar from './Menubar';
 
@@ -10,73 +10,92 @@ import { MdMenu } from 'react-icons/md';
 import { RxCross2 } from 'react-icons/rx';
 import { authClient } from '@/lib/auth-client';
 import { Avatar } from '@heroui/react';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+
+const subscribe = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
+  const mounted = useSyncExternalStore(
+    subscribe,
+    getClientSnapshot,
+    getServerSnapshot,
+  );
 
   const { data: session, isPending } = authClient.useSession();
+
   const users = session?.user;
+
   const router = useRouter();
 
+  const showAuthState = mounted && !isPending;
+
   return (
-    <header className=" bg-sky-100 shadow-md py-5 sticky top-0 z-50">
-      <nav className="flex items-center justify-between w-10/12 mx-auto">
-        {/* Logo Section */}
-        <div className="flex items-center gap-1 cursor-pointer">
-          <Image src={'/logo.png'} alt="logo" width={50} height={50} />
-          <h1 className="text-lg md:text-2xl font-bold text-gray-800">
+    <header className="sticky top-0 z-50 border-b border-sky-100/80 bg-white/90 py-4 shadow-sm backdrop-blur-xl">
+      <nav className="mx-auto flex w-10/12 items-center justify-between">
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/logo.png"
+            alt="MedPrecision logo"
+            width={48}
+            height={48}
+          />
+
+          <h1 className="text-lg font-bold text-slate-900 md:text-2xl">
             MedPrecision
           </h1>
-        </div>
+        </Link>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-6">
+        <ul className="hidden items-center gap-6 md:flex">
           <li>
             <NavLinks href="/">Home</NavLinks>
           </li>
+
           <li>
             <NavLinks href="/allappointment">All Appointment</NavLinks>
           </li>
+
           <li>
             <NavLinks href="/dashboard">Dashboard</NavLinks>
           </li>
         </ul>
 
-        {/* Desktop Auth Buttons */}
-        <div className="hidden md:flex items-center gap-4">
-          {isPending ? (
-            <div>
-              <h1>loading</h1>
-            </div>
+        <div className="hidden min-w-44 items-center justify-end gap-4 md:flex">
+          {!showAuthState ? (
+            <div className="h-10 w-28 rounded-full bg-sky-100" />
           ) : users ? (
             <div className="flex items-center gap-2">
               <Avatar>
                 <Avatar.Image alt={users?.name} src={users?.image} />
-                <Avatar.Fallback> {users.name.charAt(0)} </Avatar.Fallback>
+
+                <Avatar.Fallback>{users?.name?.charAt(0)}</Avatar.Fallback>
               </Avatar>
 
               <button
                 onClick={async () => {
                   await authClient.signOut();
+
                   router.push('/');
                 }}
-                className="bg-red-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-red-600 transition-all duration-300"
+                className="rounded-full cursor-pointer bg-rose-500 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:bg-rose-600"
               >
                 Logout
               </button>
             </div>
           ) : (
-            <div>
+            <div className="flex items-center gap-2">
               <Link
-                href={`/login`}
-                className="px-4 py-2 rounded-full cursor-pointer text-gray-600 font-semibold transition-all duration-300 hover:bg-slate-200"
+                href="/login"
+                className="rounded-full px-4 py-2 font-semibold text-slate-600 transition-all duration-300 hover:bg-slate-100"
               >
                 Login
               </Link>
+
               <Link
-                href={`/signup`}
-                className="px-4 py-2 rounded-full cursor-pointer font-semibold bg-blue-500 text-white transition-all duration-300 hover:bg-blue-600 hover:shadow-lg active:scale-95"
+                href="/signup"
+                className="rounded-full bg-blue-600 px-4 py-2 font-semibold text-white transition-all duration-300 hover:bg-blue-700 hover:shadow-lg active:scale-95"
               >
                 Register
               </Link>
@@ -84,16 +103,15 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Mobile Menu Icon */}
-        <div className="md:hidden flex items-center">
+        <div className="flex items-center md:hidden">
           {isActive ? (
             <RxCross2
-              className="text-3xl cursor-pointer text-gray-700"
+              className="cursor-pointer text-3xl text-slate-700"
               onClick={() => setIsActive(false)}
             />
           ) : (
             <MdMenu
-              className="text-3xl cursor-pointer text-gray-700"
+              className="cursor-pointer text-3xl text-slate-700"
               onClick={() => setIsActive(true)}
             />
           )}

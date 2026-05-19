@@ -27,7 +27,7 @@ const BookingButton = ({ data }) => {
       toast.success('Appointment Booked Successfully');
       e.target.reset();
     } else {
-      toast.error('Booking Failed');
+      toast.error(result.message || 'Booking Failed');
     }
   };
   return (
