@@ -34,7 +34,7 @@ const Banner = () => {
             top-rated specialists effortlessly and get the care you deserve.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
+          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start mb-12">
             <Link
               href="/signup"
               className="px-8 py-3 bg-blue-600 text-white font-bold rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 active:scale-95 w-full sm:w-auto text-center"
@@ -45,9 +45,44 @@ const Banner = () => {
               href="/about"
               className="px-8 py-3 border-2 border-blue-600 text-blue-600 font-bold rounded-full hover:bg-blue-50 transition-all duration-300 w-full sm:w-auto text-center"
             >
-              Learn More
+              View Details
             </Link>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="bg-[#fff] text-black p-6 md:p-8 rounded-2xl shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0 max-w-2xl"
+          >
+            {/* Stat 1 */}
+            <div className="flex flex-col items-center md:items-start px-4 md:px-0">
+              <span className="text-2xl md:text-3xl font-bold">15k+</span>
+              <span className="text-[10px] md:text-xs uppercase tracking-widest text-gray-900 font-bold">
+                Verified Patients
+              </span>
+            </div>
+
+            <div className="hidden md:block w-[1px] h-12 bg-gray-700"></div>
+
+            {/* Stat 2 */}
+            <div className="flex flex-col items-center md:items-start px-4 md:px-8">
+              <span className="text-2xl md:text-3xl font-bold">500+</span>
+              <span className="text-[10px] md:text-xs uppercase tracking-widest text-gray-900 font-bold">
+                Top Specialists
+              </span>
+            </div>
+
+            <div className="hidden md:block w-[1px] h-12 bg-gray-700"></div>
+
+            {/* Stat 3 */}
+            <div className="flex flex-col items-center md:items-start px-4 md:px-0">
+              <span className="text-2xl md:text-3xl font-bold">99%</span>
+              <span className="text-[10px] md:text-xs uppercase tracking-widest text-gray-900 font-bold">
+                Success Rate
+              </span>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Right Image Section */}
@@ -60,14 +95,12 @@ const Banner = () => {
           <div className="absolute -z-10 top-10 right-10 w-72 h-72 bg-blue-300 rounded-full blur-3xl opacity-40 animate-pulse"></div>
           <div className="absolute -z-10 bottom-10 left-10 w-64 h-64 bg-sky-200 rounded-full blur-3xl opacity-50 animate-bounce [animation-duration:5s]"></div>
 
-          {/* 2. Main Image Container with Floating Effect */}
           <motion.div
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
             className="relative w-full h-[400px] md:h-[550px] z-10"
           >
             <div className="absolute inset-0 bg-white rounded-full blur-3xl opacity-30 scale-75"></div>
-
             <Image
               src={'/banner.png'}
               alt="Doctor Banner"
@@ -77,6 +110,7 @@ const Banner = () => {
             />
           </motion.div>
 
+          {/* Floating Cards */}
           <motion.div
             animate={{ y: [0, -15, 0] }}
             transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
