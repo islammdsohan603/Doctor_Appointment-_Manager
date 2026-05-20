@@ -2,7 +2,42 @@
 
 import { Button, Label, Modal, Surface } from '@heroui/react';
 
+import { toast } from 'react-toastify';
+
+import { useRouter } from 'next/navigation';
+
 const UpdataData = ({ book }) => {
+  const router = useRouter();
+
+  const handleUpdate = async e => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const userData = Object.fromEntries(formData.entries());
+
+    console.log(userData);
+
+    try {
+      const res = await fetch(`http://localhost:5000/bookings/${book._id}`, {
+        method: 'PATCH',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+
+      const data = await res.json();
+
+      if (data.modifiedCount > 0) {
+        toast.success('Updated Successfully');
+        router.refresh();
+      }
+    } catch (error) {
+      toast.error('Update Failed!');
+    }
+  };
+
   return (
     <div className="flex-1">
       <Modal>
@@ -30,7 +65,7 @@ const UpdataData = ({ book }) => {
                   className="rounded-2xl border border-gray-100 bg-white shadow-sm"
                 >
                   <form
-                    onSubmit={e => e.preventDefault()}
+                    onSubmit={handleUpdate}
                     className="grid grid-cols-1 gap-5 p-6 md:grid-cols-2"
                   >
                     <div className="w-full">
