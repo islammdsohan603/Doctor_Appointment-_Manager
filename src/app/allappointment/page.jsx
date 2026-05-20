@@ -1,7 +1,10 @@
 import DoctorsCard from '@/components/home/DoctorsCard';
 import { getDoctorData } from '@/db/data';
+import { connection } from 'next/server';
 
 const AllAppiontment = async () => {
+  await connection();
+
   const data = await getDoctorData();
 
   return (

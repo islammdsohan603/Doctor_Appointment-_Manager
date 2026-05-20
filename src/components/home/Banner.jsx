@@ -36,13 +36,13 @@ const Banner = () => {
 
           <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start mb-12">
             <Link
-              href="/signup"
+              href="/allappointment"
               className="px-8 py-3 bg-blue-600 text-white font-bold rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 active:scale-95 w-full sm:w-auto text-center"
             >
               Book Appointment
             </Link>
             <Link
-              href="/about"
+              href="/"
               className="px-8 py-3 border-2 border-blue-600 text-blue-600 font-bold rounded-full hover:bg-blue-50 transition-all duration-300 w-full sm:w-auto text-center"
             >
               View Details

@@ -1,6 +1,7 @@
 import BookingButton from '@/components/BookingButton';
 import { getSingleDoctorsData } from '@/db/data';
 import Image from 'next/image';
+import { connection } from 'next/server';
 
 import {
   FaStar,
@@ -11,6 +12,8 @@ import {
 } from 'react-icons/fa6';
 
 const DoctorsDetailsPage = async ({ params }) => {
+  await connection();
+
   const { id } = await params;
 
   const data = await getSingleDoctorsData(id);

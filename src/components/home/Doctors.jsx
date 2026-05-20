@@ -1,10 +1,13 @@
 import { getData } from '@/db/data';
+import { connection } from 'next/server';
 import Link from 'next/link';
-import React, { Suspense } from 'react';
+import React from 'react';
 import DoctorsCard from './DoctorsCard';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
 const Doctors = async () => {
+  await connection();
+
   const data = await getData();
 
   return (

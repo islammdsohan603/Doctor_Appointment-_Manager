@@ -1,6 +1,8 @@
 import Banner from "@/components/home/Banner";
 import Doctors from "@/components/home/Doctors";
+import DoctorsLoading from "@/components/home/DoctorsLoading";
 import Whychoose from "@/components/home/Whychoose";
+import { Suspense } from "react";
 
 
 export default function Home() {
@@ -9,7 +11,9 @@ export default function Home() {
 
       <Banner />
       <Whychoose />
-      <Doctors />
+      <Suspense fallback={<DoctorsLoading />}>
+        <Doctors />
+      </Suspense>
     </div>
   );
 }
