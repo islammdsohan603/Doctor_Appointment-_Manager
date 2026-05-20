@@ -1,6 +1,7 @@
 import React from 'react';
 import { connection } from 'next/server';
 import UpdataData from '@/components/UpdataData';
+import DeletModeal from '@/components/DeletModeal';
 
 const DashBord = async () => {
   await connection();
@@ -76,14 +77,14 @@ const DashBord = async () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+              <div className="flex items-center justify-between gap-3 pt-4 border-t border-gray-100">
                 <div>
                   {' '}
                   <UpdataData book={book} />{' '}
                 </div>
-                <button className="flex-1 bg-red-50 hover:bg-red-100 text-red-600 py-2 rounded-lg text-sm font-medium transition-colors duration-200 border border-red-100">
-                  Delete
-                </button>
+                <div>
+                  <DeletModeal book={book} />
+                </div>
               </div>
             </div>
           ))}
