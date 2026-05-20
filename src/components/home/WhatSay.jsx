@@ -72,7 +72,7 @@ const WhatSay = () => {
               className="text-gray-400 text-sm md:text-base leading-relaxed"
             >
               Join the most advanced medical ecosystem today and gain priority
-              access to the world's leading specialists with zero friction.
+              access to the world&apos;s leading specialists with zero friction.
             </motion.p>
 
             <div className="flex flex-wrap gap-4">

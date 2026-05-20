@@ -5,6 +5,7 @@ import DeletModeal from './DeletModeal';
 import UpdataData from './UpdataData';
 import { authClient } from '@/lib/auth-client';
 import { CalendarDays, Mail, Phone, UserRound, Clock3 } from 'lucide-react';
+import UpdataProfile from './UpdataProfile';
 
 const TabSection = ({ data }) => {
   const { data: session } = authClient.useSession();
@@ -213,6 +214,10 @@ const TabSection = ({ data }) => {
                     <h3 className="text-2xl font-bold text-gray-800">24/7</h3>
 
                     <p className="text-sm text-gray-400">Medical Support</p>
+                  </div>
+
+                  <div>
+                    <UpdataProfile user={users} />
                   </div>
                 </div>
               </div>
