@@ -1,6 +1,6 @@
 'use client';
 
-import { Tabs } from '@heroui/react';
+import { Avatar, Tabs } from '@heroui/react';
 import DeletModeal from './DeletModeal';
 import UpdataData from './UpdataData';
 import { authClient } from '@/lib/auth-client';
@@ -177,11 +177,14 @@ const TabSection = ({ data }) => {
               <div className="h-40 bg-linear-to-r from-cyan-500 via-blue-500 to-indigo-600"></div>
 
               {/* Profile Content */}
-              <div className="relative px-8 pb-10">
+              <div className="relative px-2 pb-2">
                 {/* Avatar */}
                 <div className="-mt-16 flex justify-center">
                   <div className="flex h-32 w-32 items-center justify-center rounded-full border-8 border-white bg-linear-to-br from-cyan-500 to-blue-600 text-5xl font-black text-white shadow-xl">
-                    {users?.name?.charAt(0).toUpperCase()}
+                    <Avatar>
+                      <Avatar.Image alt={users?.name} src={users?.image} />
+                      <Avatar.Fallback>{users?.name.charAt(0)}</Avatar.Fallback>
+                    </Avatar>
                   </div>
                 </div>
 

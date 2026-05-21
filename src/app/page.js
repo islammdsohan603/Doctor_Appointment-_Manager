@@ -8,6 +8,11 @@ import { Suspense } from "react";
 
 
 
+export const metadata = {
+  title: "Home",
+  description: "Find and book appointments with verified professional doctors and specialists in Bangladesh.",
+};
+
 export default function Home() {
   return (
     <div>

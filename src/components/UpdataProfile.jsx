@@ -2,11 +2,14 @@
 
 import { authClient } from '@/lib/auth-client';
 import { Button, Label, Modal, Surface } from '@heroui/react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 const UpdataProfile = ({ user }) => {
   const router = useRouter();
+  const [imagePreview, setImagePreview] = useState(user?.image || '');
 
   const handleUpdataProfile = async e => {
     e.preventDefault();
@@ -35,9 +38,10 @@ const UpdataProfile = ({ user }) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center gap-4">
+      {/* Update Button & Modal */}
       <Modal>
-        <Button variant="secondary">Update</Button>
+        <Button variant="secondary">Update Profile</Button>
 
         <Modal.Backdrop>
           <Modal.Container placement="center">
@@ -76,8 +80,31 @@ const UpdataProfile = ({ user }) => {
                         name="image"
                         defaultValue={user?.image || ''}
                         placeholder="Paste your photo URL"
+                        onChange={e => setImagePreview(e.target.value)}
                         className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 outline-none focus:border-blue-500"
                       />
+                    </div>
+
+                    <div className="flex flex-col items-center gap-2">
+                      <Label className="text-sm font-semibold text-gray-700">
+                        Preview
+                      </Label>
+                      <div className="relative h-24 w-24 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
+                        {imagePreview ? (
+                          <Image
+                            src={user?.image}
+                            alt={user?.name || 'Profile'}
+                            fill
+                            className="object-cover"
+                            priority
+                            unoptimized
+                          />
+                        ) : (
+                          <span className="text-3xl font-bold text-gray-400">
+                            {user?.name?.charAt(0)?.toUpperCase() || 'U'}
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     <Button type="submit">Update Profile</Button>

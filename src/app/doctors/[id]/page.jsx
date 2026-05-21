@@ -12,6 +12,33 @@ import {
   FaMoneyBillWave,
 } from 'react-icons/fa6';
 
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const data = await getSingleDoctorsData(id);
+
+  if (!data || data.error) {
+    return {
+      title: "Doctor Not Found",
+      description: "The requested doctor profile could not be found.",
+    };
+  }
+
+  return {
+    title: `${data.name} | ${data.specialty}`,
+    description: `${data.name} is a specialist in ${data.specialty} at ${data.hospital}. Read reviews, check fees, and book an appointment online.`,
+    openGraph: {
+      title: `${data.name} | ${data.specialty}`,
+      description: `${data.name} is a specialist in ${data.specialty} at ${data.hospital}.`,
+      images: [
+        {
+          url: data.image,
+          alt: data.name,
+        },
+      ],
+    },
+  };
+}
+
 const DoctorsDetailsPage = async ({ params }) => {
   await connection();
 

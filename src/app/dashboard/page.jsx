@@ -7,6 +7,11 @@ import UpdataData from '@/components/UpdataData';
 import DeletModeal from '@/components/DeletModeal';
 import TabSection from '@/components/TabSection';
 
+export const metadata = {
+  title: "Dashboard",
+  description: "Manage your doctor appointments, view upcoming consults, and update booking details.",
+};
+
 const DashBord = async () => {
   const headersList = await headers();
   const session = await auth.api.getSession({
