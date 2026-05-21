@@ -69,19 +69,6 @@ const UpdataProfile = ({ user }) => {
 
                     <div>
                       <Label className="mb-2 block text-sm font-semibold text-gray-700">
-                        Email
-                      </Label>
-
-                      <input
-                        type="email"
-                        value={user?.email || ''}
-                        readOnly
-                        className="h-11 w-full rounded-xl border border-gray-200 bg-gray-100 px-4 text-gray-500 outline-none"
-                      />
-                    </div>
-
-                    <div>
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
                         Photo URL
                       </Label>
 

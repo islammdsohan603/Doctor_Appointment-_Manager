@@ -15,9 +15,12 @@ import {
 } from '@heroui/react';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 
 const Loginpage = () => {
+  const router = useRouter();
+
   const onSubmit = async e => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -29,7 +32,7 @@ const Loginpage = () => {
     });
 
     if (data) {
-      toast.success('Account Successfull created 🎉');
+      toast.success('Login Successful 🎉');
       router.push('/');
     }
     if (error) {

@@ -1,6 +1,7 @@
 import BookingButton from '@/components/BookingButton';
 import { getSingleDoctorsData } from '@/db/data';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import { connection } from 'next/server';
 
 import {
@@ -17,6 +18,10 @@ const DoctorsDetailsPage = async ({ params }) => {
   const { id } = await params;
 
   const data = await getSingleDoctorsData(id);
+
+  if (!data || data.error) {
+    notFound();
+  }
 
   return (
     <section className="min-h-screen bg-linear-to-br from-slate-50 via-cyan-50 to-blue-50 py-10 lg:py-20 overflow-hidden">
@@ -35,11 +40,11 @@ const DoctorsDetailsPage = async ({ params }) => {
               <div className="relative w-full h-[320px] sm:h-[450px] md:h-[550px] lg:h-full min-h-[500px] rounded-[2rem] overflow-hidden bg-linear-to-br from-slate-800 to-slate-900 border border-white/10">
                 <Image
                   src={data.image}
-                  alt={data.name}
+                  alt={data.name || 'Doctor profile'}
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover hover:scale-105 transition-all duration-500"
+                  className="object-cover transition-all duration-500 hover:scale-105"
                 />
 
                 {/* Overlay */}
@@ -147,7 +152,7 @@ const DoctorsDetailsPage = async ({ params }) => {
                 </h2>
 
                 <div className="flex flex-wrap gap-4">
-                  {data.availability.map((time, index) => (
+                  {data?.availability?.map((time, index) => (
                     <span
                       key={index}
                       className="px-6 py-3 rounded-full bg-linear-to-r from-cyan-500 to-blue-500 text-white font-semibold shadow-lg hover:scale-105 transition-all duration-300"

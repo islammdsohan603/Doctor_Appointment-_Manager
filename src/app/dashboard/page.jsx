@@ -1,14 +1,54 @@
 import React from 'react';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 import UpdataData from '@/components/UpdataData';
 import DeletModeal from '@/components/DeletModeal';
 import TabSection from '@/components/TabSection';
 
 const DashBord = async () => {
-  const getData = await fetch('http://localhost:5000/bookings', {
-    cache: 'no-store',
+  const headersList = await headers();
+  const session = await auth.api.getSession({
+    headers: headersList,
   });
-  const data = await getData.json();
+
+  if (!session) {
+    redirect('/login');
+  }
+
+  const tokenData = await auth.api.getToken({
+    headers: headersList,
+  });
+
+  const email = session.user?.email;
+  const token = tokenData?.token;
+
+  let data = [];
+  if (email && token) {
+    try {
+      const getData = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings?email=${encodeURIComponent(email)}`,
+        {
+          cache: 'no-store',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        },
+      );
+      if (getData.ok) {
+        data = await getData.json();
+      } else {
+        console.error("Failed to fetch bookings. Status:", getData.status);
+      }
+    } catch (error) {
+      console.error("Error fetching bookings:", error);
+    }
+  }
+
+  if (!Array.isArray(data)) {
+    data = [];
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">

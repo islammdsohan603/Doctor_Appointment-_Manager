@@ -66,7 +66,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/all-appointments"
+                  href="/allappointment"
                   className="hover:text-blue-400 transition-colors duration-300 text-sm"
                 >
                   All Appointments
@@ -74,7 +74,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/about"
+                  href="/"
                   className="hover:text-blue-400 transition-colors duration-300 text-sm"
                 >
                   About Us
@@ -82,7 +82,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/services"
+                  href="/"
                   className="hover:text-blue-400 transition-colors duration-300 text-sm"
                 >
                   Our Services
@@ -97,7 +97,7 @@ const Footer = () => {
             <ul className="flex flex-col gap-3">
               <li>
                 <Link
-                  href="/faq"
+                  href="/"
                   className="hover:text-blue-400 transition-colors duration-300 text-sm"
                 >
                   FAQs
@@ -105,7 +105,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/privacy"
+                  href="/"
                   className="hover:text-blue-400 transition-colors duration-300 text-sm"
                 >
                   Privacy Policy
@@ -121,7 +121,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href="/"
                   className="hover:text-blue-400 transition-colors duration-300 text-sm"
                 >
                   Help Center

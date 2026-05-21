@@ -6,8 +6,6 @@ import DoctorsCard from './DoctorsCard';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
 const Doctors = async () => {
-  await connection();
-
   const data = await getData();
 
   return (

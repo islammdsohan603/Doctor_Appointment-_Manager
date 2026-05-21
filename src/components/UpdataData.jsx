@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 
 const UpdataData = ({ book }) => {
   const router = useRouter();
+  const apiBaseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
 
   const handleUpdate = async e => {
     e.preventDefault();
@@ -16,16 +17,17 @@ const UpdataData = ({ book }) => {
 
     const userData = Object.fromEntries(formData.entries());
 
-    console.log(userData);
-
     try {
-      const res = await fetch(`http://localhost:5000/bookings/${book._id}`, {
-        method: 'PATCH',
-        headers: {
-          'content-type': 'application/json',
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${book._id}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify(userData),
         },
-        body: JSON.stringify(userData),
-      });
+      );
 
       const data = await res.json();
 

@@ -9,9 +9,12 @@ const DeletModeal = ({ book }) => {
 
   const onSubmit = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/bookings/${book._id}`, {
-        method: 'DELETE',
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/${book._id}`,
+        {
+          method: 'DELETE',
+        },
+      );
 
       const data = await res.json();
 
