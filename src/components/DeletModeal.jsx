@@ -10,7 +10,7 @@ const DeletModeal = ({ book }) => {
   const onSubmit = async () => {
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/${book._id}`,
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${book._id}`,
         {
           method: 'DELETE',
         },
@@ -18,12 +18,17 @@ const DeletModeal = ({ book }) => {
 
       const data = await res.json();
 
+      if (!res.ok) {
+        toast.error(data?.message || 'Delete Failed!');
+        return;
+      }
+
       if (data.deletedCount > 0) {
         toast.success('Booking Deleted Successfully');
 
         router.refresh();
       } else {
-        toast.error('Delete Failed!');
+        toast.error('Booking not found!');
       }
     } catch (error) {
       console.log(error);

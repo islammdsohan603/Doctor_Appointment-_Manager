@@ -24,11 +24,12 @@ export const getSingleDoctorsData = async id => {
   return await res.json();
 };
 
-export const boctorsBooking = async bookingData => {
+export const boctorsBooking = async (bookingData, token) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
     body: JSON.stringify(bookingData),
   });

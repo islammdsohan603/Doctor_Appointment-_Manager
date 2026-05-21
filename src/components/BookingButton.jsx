@@ -7,21 +7,28 @@ import Image from 'next/image';
 import { toast } from 'react-toastify';
 
 const BookingButton = ({ data }) => {
+  const { data: session } = authClient.useSession();
+  const users = session?.user;
+
   const handleBookingAppiontment = async e => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
 
     const usersData = Object.fromEntries(formData.entries());
+    const tokenRes = await fetch('/api/auth/token');
+    const tokenData = tokenRes.ok ? await tokenRes.json() : null;
 
     const bookingInfo = {
       ...usersData,
+      email: users?.email || usersData.email,
+      name: usersData.name || users?.name,
       patientId: data._id,
       patientName: data.name,
       patientGender: data.gender,
     };
 
-    const result = await boctorsBooking(bookingInfo);
+    const result = await boctorsBooking(bookingInfo, tokenData?.token);
 
     if (result.insertedId) {
       toast.success('Appointment Booked Successfully');
@@ -87,34 +94,37 @@ const BookingButton = ({ data }) => {
                     className="grid grid-cols-1 md:grid-cols-2 gap-5 p-6"
                   >
                     {/* Email */}
-                    <TextField className="w-full">
+                    <div className="w-full">
                       <Label className="mb-2 block text-sm font-semibold text-gray-700">
                         Email Address
                       </Label>
 
-                      <Input
+                      <input
                         name="email"
                         required
                         type="email"
+                        defaultValue={users?.email || ''}
+                        readOnly={Boolean(users?.email)}
                         placeholder="Enter your email"
-                        className="rounded-xl"
+                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 outline-none focus:border-blue-500 read-only:bg-gray-100"
                       />
-                    </TextField>
+                    </div>
 
                     {/* Patient Name */}
-                    <TextField className="w-full">
+                    <div className="w-full">
                       <Label className="mb-2 block text-sm font-semibold text-gray-700">
                         Patient Name
                       </Label>
 
-                      <Input
+                      <input
                         name="name"
                         required
                         type="text"
+                        defaultValue={users?.name || ''}
                         placeholder="Full name"
-                        className="rounded-xl"
+                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 outline-none focus:border-blue-500"
                       />
-                    </TextField>
+                    </div>
 
                     {/* Phone */}
                     <TextField className="w-full">
