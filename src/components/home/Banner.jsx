@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const Banner = () => {
   return (
-    <section className="relative min-h-[85vh] w-full overflow-hidden bg-linear-to-b from-sky-100 to-white">
+    <section className="relative min-h-[85vh] w-full overflow-hidden bg-linear-to-b from-sky-100 to-white dark:from-slate-900 dark:to-slate-800">
       <div className="container mx-auto w-10/12 px-4 py-12 md:py-20 flex flex-col md:flex-row items-center justify-between gap-10">
         {/* Left Content Section */}
         <motion.div
@@ -19,17 +19,19 @@ const Banner = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="bg-blue-100 text-blue-600 px-4 py-1 rounded-full text-sm font-semibold mb-4 inline-block"
+            className="bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300 px-4 py-1 rounded-full text-sm font-semibold mb-4 inline-block"
           >
             ⭐ Trusted by 10,000+ Patients
           </motion.span>
 
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-800 leading-tight mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white leading-tight mb-6">
             Your Health, Our <br />
-            <span className="text-blue-600">Precision Care.</span>
+            <span className="text-blue-600 dark:text-blue-400">
+              Precision Care.
+            </span>
           </h1>
 
-          <p className="text-gray-600 text-lg md:text-xl mb-8 max-w-lg leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-300 text-lg md:text-xl mb-8 max-w-lg leading-relaxed">
             Experience the next generation of healthcare. Book appointments with
             top-rated specialists effortlessly and get the care you deserve.
           </p>
@@ -43,7 +45,7 @@ const Banner = () => {
             </Link>
             <Link
               href="/"
-              className="px-8 py-3 border-2 border-blue-600 text-blue-600 font-bold rounded-full hover:bg-blue-50 transition-all duration-300 w-full sm:w-auto text-center"
+              className="px-8 py-3 border-2 border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 font-bold rounded-full hover:bg-blue-50 dark:hover:bg-slate-700 transition-all duration-300 w-full sm:w-auto text-center"
             >
               View Details
             </Link>
@@ -53,32 +55,32 @@ const Banner = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="bg-[#fff] text-black p-6 md:p-8 rounded-2xl shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0 max-w-2xl"
+            className="bg-white dark:bg-slate-800 text-black dark:text-white p-6 md:p-8 rounded-2xl shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0 max-w-2xl"
           >
             {/* Stat 1 */}
             <div className="flex flex-col items-center md:items-start px-4 md:px-0">
               <span className="text-2xl md:text-3xl font-bold">15k+</span>
-              <span className="text-[10px] md:text-xs uppercase tracking-widest text-gray-900 font-bold">
+              <span className="text-[10px] md:text-xs uppercase tracking-widest text-gray-900 dark:text-gray-300 font-bold">
                 Verified Patients
               </span>
             </div>
 
-            <div className="hidden md:block w-[1px] h-12 bg-gray-700"></div>
+            <div className="hidden md:block w-[1px] h-12 bg-gray-700 dark:bg-gray-500"></div>
 
             {/* Stat 2 */}
             <div className="flex flex-col items-center md:items-start px-4 md:px-8">
               <span className="text-2xl md:text-3xl font-bold">500+</span>
-              <span className="text-[10px] md:text-xs uppercase tracking-widest text-gray-900 font-bold">
+              <span className="text-[10px] md:text-xs uppercase tracking-widest text-gray-900 dark:text-gray-300 font-bold">
                 Top Specialists
               </span>
             </div>
 
-            <div className="hidden md:block w-[1px] h-12 bg-gray-700"></div>
+            <div className="hidden md:block w-[1px] h-12 bg-gray-700 dark:bg-gray-500"></div>
 
             {/* Stat 3 */}
             <div className="flex flex-col items-center md:items-start px-4 md:px-0">
               <span className="text-2xl md:text-3xl font-bold">99%</span>
-              <span className="text-[10px] md:text-xs uppercase tracking-widest text-gray-900 font-bold">
+              <span className="text-[10px] md:text-xs uppercase tracking-widest text-gray-900 dark:text-gray-300 font-bold">
                 Success Rate
               </span>
             </div>

@@ -49,7 +49,7 @@ const UpdataData = ({ book }) => {
 
         <Modal.Backdrop className="backdrop-blur-sm bg-black/40">
           <Modal.Container placement="center">
-            <Modal.Dialog className="w-full max-w-2xl overflow-hidden rounded-[2rem] border border-white/20 bg-white shadow-2xl">
+            <Modal.Dialog className="w-full max-w-2xl overflow-hidden rounded-[2rem] border border-white/20 bg-white shadow-2xl dark:bg-slate-900">
               <Modal.CloseTrigger />
 
               <Modal.Header className="bg-linear-to-r from-cyan-500 to-blue-600 px-8 py-6 text-white">
@@ -61,17 +61,17 @@ const UpdataData = ({ book }) => {
                 </div>
               </Modal.Header>
 
-              <Modal.Body className="bg-gray-50 p-8">
+              <Modal.Body className="bg-gray-50 p-8 dark:bg-slate-950">
                 <Surface
                   variant="default"
-                  className="rounded-2xl border border-gray-100 bg-white shadow-sm"
+                  className="rounded-2xl border border-gray-100 bg-white shadow-sm dark:bg-slate-900 dark:border-slate-700"
                 >
                   <form
                     onSubmit={handleUpdate}
                     className="grid grid-cols-1 gap-5 p-6 md:grid-cols-2"
                   >
                     <div className="w-full">
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
+                      <Label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-slate-200">
                         Email Address
                       </Label>
 
@@ -81,12 +81,12 @@ const UpdataData = ({ book }) => {
                         type="email"
                         defaultValue={book?.email || ''}
                         placeholder="Enter your email"
-                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 outline-none focus:border-blue-500"
+                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-gray-900 outline-none focus:border-blue-500 placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500"
                       />
                     </div>
 
                     <div className="w-full">
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
+                      <Label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-slate-200">
                         Patient Name
                       </Label>
 
@@ -96,12 +96,12 @@ const UpdataData = ({ book }) => {
                         type="text"
                         defaultValue={book?.name || ''}
                         placeholder="Full name"
-                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 outline-none focus:border-blue-500"
+                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-gray-900 outline-none focus:border-blue-500 placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500"
                       />
                     </div>
 
                     <div className="w-full">
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
+                      <Label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-slate-200">
                         Phone Number
                       </Label>
 
@@ -110,19 +110,19 @@ const UpdataData = ({ book }) => {
                         type="tel"
                         defaultValue={book?.phone || ''}
                         placeholder="+8801XXXXXXXXX"
-                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 outline-none focus:border-blue-500"
+                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-gray-900 outline-none focus:border-blue-500 placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500"
                       />
                     </div>
 
                     <div>
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
+                      <Label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-slate-200">
                         Gender
                       </Label>
 
                       <select
                         name="gender"
                         defaultValue={book?.gender || 'Male'}
-                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 outline-none focus:border-blue-500"
+                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-gray-900 outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
                       >
                         <option>Male</option>
                         <option>Female</option>
@@ -131,7 +131,7 @@ const UpdataData = ({ book }) => {
                     </div>
 
                     <div className="w-full">
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
+                      <Label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-slate-200">
                         Appointment Date
                       </Label>
 
@@ -139,12 +139,12 @@ const UpdataData = ({ book }) => {
                         name="appointmentDate"
                         type="date"
                         defaultValue={book?.appointmentDate || ''}
-                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 outline-none focus:border-blue-500"
+                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-gray-900 outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
                       />
                     </div>
 
                     <div className="w-full">
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
+                      <Label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-slate-200">
                         Appointment Time
                       </Label>
 
@@ -152,12 +152,12 @@ const UpdataData = ({ book }) => {
                         name="appointmentTime"
                         type="time"
                         defaultValue={book?.appointmentTime || ''}
-                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 outline-none focus:border-blue-500"
+                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-gray-900 outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
                       />
                     </div>
 
                     <div className="md:col-span-2">
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
+                      <Label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-slate-200">
                         Reason for Visit
                       </Label>
 
@@ -166,7 +166,7 @@ const UpdataData = ({ book }) => {
                         rows={4}
                         defaultValue={book?.reason || ''}
                         placeholder="Describe your problem..."
-                        className="w-full resize-none rounded-2xl border border-gray-200 p-4 outline-none focus:border-blue-500"
+                        className="w-full resize-none rounded-2xl border border-gray-200 bg-white p-4 text-gray-900 outline-none focus:border-blue-500 placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500"
                       ></textarea>
                     </div>
 

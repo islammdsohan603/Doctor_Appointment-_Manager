@@ -45,21 +45,26 @@ const UpdataProfile = ({ user }) => {
 
         <Modal.Backdrop>
           <Modal.Container placement="center">
-            <Modal.Dialog className="rounded-3xl sm:max-w-md">
+            <Modal.Dialog className="rounded-3xl sm:max-w-md bg-white dark:bg-slate-900">
               <Modal.CloseTrigger />
 
               <Modal.Header>
-                <h2 className="text-2xl font-bold">Update Profile</h2>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  Update Profile
+                </h2>
               </Modal.Header>
 
-              <Modal.Body className="p-6">
-                <Surface variant="default" className="rounded-2xl">
+              <Modal.Body className="p-6 bg-gray-50 dark:bg-slate-950">
+                <Surface
+                  variant="default"
+                  className="rounded-2xl bg-white dark:bg-slate-900"
+                >
                   <form
                     onSubmit={handleUpdataProfile}
                     className="flex flex-col gap-4"
                   >
                     <div>
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
+                      <Label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-slate-200">
                         Name
                       </Label>
 
@@ -67,12 +72,12 @@ const UpdataProfile = ({ user }) => {
                         name="name"
                         defaultValue={user?.name || ''}
                         placeholder="Enter your name"
-                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 outline-none focus:border-blue-500"
+                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-gray-900 outline-none focus:border-blue-500 placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500"
                       />
                     </div>
 
                     <div>
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
+                      <Label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-slate-200">
                         Photo URL
                       </Label>
 
@@ -81,7 +86,7 @@ const UpdataProfile = ({ user }) => {
                         defaultValue={user?.image || ''}
                         placeholder="Paste your photo URL"
                         onChange={e => setImagePreview(e.target.value)}
-                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 outline-none focus:border-blue-500"
+                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-gray-900 outline-none focus:border-blue-500 placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500"
                       />
                     </div>
 

@@ -14,11 +14,11 @@ const DoctorsCard = ({ doctor }) => {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
       whileHover={{ y: -15 }}
-      className="bg-white border border-gray-100 p-5 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden"
+      className="bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 p-5 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden"
     >
-      <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-50 rounded-full transition-transform duration-500 group-hover:scale-150 opacity-50" />
+      <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-50 dark:bg-blue-900/30 rounded-full transition-transform duration-500 group-hover:scale-150 opacity-50" />
 
-      <div className="relative w-full h-72 mb-6 overflow-hidden rounded-3xl bg-gray-100 shadow-inner">
+      <div className="relative w-full h-72 mb-6 overflow-hidden rounded-3xl bg-gray-100 dark:bg-slate-700 shadow-inner">
         <Image
           src={doctor.image}
           alt={doctor.name}
@@ -26,8 +26,8 @@ const DoctorsCard = ({ doctor }) => {
           className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
         />
 
-        <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm border border-white/50">
-          <p className="text-[11px] font-bold text-gray-700 flex items-center gap-1.5">
+        <div className="absolute top-4 right-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm border border-white/50 dark:border-slate-700/50">
+          <p className="text-[11px] font-bold text-gray-700 dark:text-gray-200 flex items-center gap-1.5">
             <FaStethoscope className="text-blue-600" />
             {doctor.experience} Years Exp.
           </p>
@@ -46,18 +46,18 @@ const DoctorsCard = ({ doctor }) => {
           <span className="text-[10px] text-gray-400 ml-1">(4.8)</span>
         </div>
 
-        <h3 className="text-xl font-extrabold text-gray-800 group-hover:text-blue-600 transition-colors duration-300 leading-tight">
+        <h3 className="text-xl font-extrabold text-gray-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 leading-tight">
           {doctor.name}
         </h3>
 
-        <p className="text-blue-500 text-sm font-semibold mb-6 mt-1">
+        <p className="text-blue-500 dark:text-blue-400 text-sm font-semibold mb-6 mt-1">
           {doctor.specialty || 'Senior Specialist'}
         </p>
 
         <Link
           href={`/doctors/${doctor._id}`}
-          className="block w-full text-center py-3.5 bg-gray-900 text-white font-bold rounded-2xl transition-all duration-300 
-                     hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-200 active:scale-95"
+          className="block w-full text-center py-3.5 bg-gray-900 dark:bg-slate-700 text-white font-bold rounded-2xl transition-all duration-300 
+                     hover:bg-blue-600 dark:hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-200 active:scale-95"
         >
           View Profile
         </Link>

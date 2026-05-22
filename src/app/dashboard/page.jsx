@@ -8,8 +8,9 @@ import DeletModeal from '@/components/DeletModeal';
 import TabSection from '@/components/TabSection';
 
 export const metadata = {
-  title: "Dashboard",
-  description: "Manage your doctor appointments, view upcoming consults, and update booking details.",
+  title: 'Dashboard',
+  description:
+    'Manage your doctor appointments, view upcoming consults, and update booking details.',
 };
 
 const DashBord = async () => {
@@ -37,17 +38,17 @@ const DashBord = async () => {
         {
           cache: 'no-store',
           headers: {
-            'Authorization': `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         },
       );
       if (getData.ok) {
         data = await getData.json();
       } else {
-        console.error("Failed to fetch bookings. Status:", getData.status);
+        console.error('Failed to fetch bookings. Status:', getData.status);
       }
     } catch (error) {
-      console.error("Error fetching bookings:", error);
+      console.error('Error fetching bookings:', error);
     }
   }
 
@@ -56,19 +57,19 @@ const DashBord = async () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className="min-h-screen bg-gray-50 dark:bg-slate-900 py-12 px-4">
       <div className="w-10/12  mx-auto">
         {/* Header Section */}
         <div className="mb-10 flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800">
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
               Appointment Dashboard
             </h1>
-            <p className="text-gray-500 mt-2">
+            <p className="text-gray-500 dark:text-gray-400 mt-2">
               Manage all your patient bookings efficiently
             </p>
           </div>
-          <div className="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">
+          <div className="bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-semibold">
             Total Bookings: {data.length}
           </div>
         </div>

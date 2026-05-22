@@ -13,24 +13,28 @@ const TabSection = ({ data }) => {
   const users = session?.user;
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-cyan-50 via-white to-blue-50 py-12">
+    <div className="min-h-screen bg-linear-to-br from-cyan-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 py-12">
       <div className="w-11/12 mx-auto">
         {/* Header */}
         <div className="mb-10 flex flex-col md:flex-row items-center justify-between gap-5">
           <div>
-            <h1 className="text-4xl font-black text-gray-800">
+            <h1 className="text-4xl font-black text-gray-800 dark:text-white">
               Patient Dashboard
             </h1>
 
-            <p className="mt-2 text-gray-500">
+            <p className="mt-2 text-gray-500 dark:text-gray-400">
               Manage your appointments and profile easily
             </p>
           </div>
 
-          <div className="rounded-2xl bg-white px-5 py-3 shadow-sm border border-gray-100">
-            <p className="text-sm text-gray-500">Total Appointments</p>
+          <div className="rounded-2xl bg-white dark:bg-slate-800 px-5 py-3 shadow-sm border border-gray-100 dark:border-slate-700">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              Total Appointments
+            </p>
 
-            <h2 className="text-3xl font-bold text-blue-600">{data.length}</h2>
+            <h2 className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+              {data.length}
+            </h2>
           </div>
         </div>
 

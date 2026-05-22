@@ -41,14 +41,14 @@ const Loginpage = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-linear-to-br from-cyan-50 via-white to-blue-100 px-4 py-10 overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center bg-linear-to-br from-cyan-50 via-white to-blue-100 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900/30 px-4 py-10 overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-cyan-300/30 blur-3xl rounded-full"></div>
+      <div className="absolute top-0 left-0 w-72 h-72 bg-cyan-300/30 dark:bg-cyan-400/10 blur-3xl rounded-full"></div>
 
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-300/30 blur-3xl rounded-full"></div>
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-300/30 dark:bg-blue-400/10 blur-3xl rounded-full"></div>
 
       {/* Main Container */}
-      <div className="relative w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 bg-white/80 backdrop-blur-2xl rounded-[2.5rem] overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.08)] border border-white">
+      <div className="relative w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-2xl rounded-[2.5rem] overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.08)] dark:shadow-[0_20px_80px_rgba(0,0,0,0.3)] border border-white dark:border-slate-700">
         {/* LEFT SIDE */}
         <div className="hidden lg:flex flex-col justify-center bg-linear-to-br from-cyan-500 to-blue-600 p-14 text-white relative overflow-hidden">
           {/* Glow */}
@@ -101,9 +101,11 @@ const Loginpage = () => {
         {/* RIGHT SIDE */}
         <div className="p-6 sm:p-10 lg:p-14 flex flex-col justify-center">
           <div className="mb-8 text-center lg:text-left">
-            <h2 className="text-4xl font-black text-slate-800">Sign In</h2>
+            <h2 className="text-4xl font-black text-slate-800 dark:text-white">
+              Sign In
+            </h2>
 
-            <p className="text-slate-500 mt-3">
+            <p className="text-slate-500 dark:text-slate-400 mt-3">
               Enter your credentials to continue
             </p>
           </div>
@@ -122,7 +124,7 @@ const Loginpage = () => {
                 return null;
               }}
             >
-              <Label className="mb-2 block text-sm font-semibold text-slate-700">
+              <Label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300">
                 Email Address
               </Label>
 
@@ -153,7 +155,7 @@ const Loginpage = () => {
                 return null;
               }}
             >
-              <Label className="mb-2 block text-sm font-semibold text-slate-700">
+              <Label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300">
                 Password
               </Label>
 
@@ -162,7 +164,7 @@ const Loginpage = () => {
                 className="rounded-2xl"
               />
 
-              <Description className="text-xs text-slate-400 mt-1">
+              <Description className="text-xs text-slate-400 dark:text-slate-500 mt-1">
                 Must contain 8 characters, 1 uppercase & 1 number
               </Description>
 
@@ -173,7 +175,7 @@ const Loginpage = () => {
             <div className="flex justify-end w-full">
               <button
                 type="button"
-                className="text-sm text-cyan-600 hover:underline font-medium"
+                className="text-sm text-cyan-600 dark:text-cyan-400 hover:underline font-medium"
               >
                 Forgot Password?
               </button>
@@ -190,11 +192,11 @@ const Loginpage = () => {
 
             {/* Divider */}
             <div className="flex items-center gap-4 my-3 w-full">
-              <div className="flex-1 h-0.5 bg-slate-200"></div>
+              <div className="flex-1 h-0.5 bg-slate-200 dark:bg-slate-700"></div>
 
-              <p className="text-sm text-slate-400">OR</p>
+              <p className="text-sm text-slate-400 dark:text-slate-500">OR</p>
 
-              <div className="flex-1 h-0.5 bg-slate-200"></div>
+              <div className="flex-1 h-0.5 bg-slate-200 dark:bg-slate-700"></div>
             </div>
 
             {/* Footer */}

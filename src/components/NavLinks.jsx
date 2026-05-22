@@ -10,8 +10,10 @@ const NavLinks = ({ href, children }) => {
   return (
     <Link
       href={href}
-      className={`relative px-2 py-1 transition-all duration-300 ease-in-out font-medium cursor-pointer hover:text-blue-600 ${
-        isActive ? 'text-blue-600 font-bold' : 'text-gray-600'
+      className={`relative px-2 py-1 transition-all duration-300 ease-in-out font-medium cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 ${
+        isActive
+          ? 'text-blue-600 dark:text-blue-400 font-bold'
+          : 'text-gray-600 dark:text-gray-300'
       }`}
     >
       {children}

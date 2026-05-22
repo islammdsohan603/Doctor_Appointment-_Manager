@@ -60,7 +60,7 @@ const Whychoose = () => {
   };
 
   return (
-    <section className="py-20 bg-white  ">
+    <section className="py-20 bg-white dark:bg-slate-900">
       <div className="w-10/12 mx-auto">
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
           <motion.h1
@@ -68,7 +68,7 @@ const Whychoose = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white"
           >
             The Standard of Precision
           </motion.h1>
@@ -77,7 +77,7 @@ const Whychoose = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-gray-500 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
+            className="text-gray-500 dark:text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
           >
             We ve reimagined the patient journey to provide a seamless,
             high-performance experience that prioritizes your health outcomes

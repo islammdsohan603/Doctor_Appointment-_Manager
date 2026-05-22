@@ -51,7 +51,7 @@ const WhatSay = () => {
         whileInView="visible"
         viewport={{ once: true }}
         variants={fadeInUp}
-        className="relative bg-[#0f172a] rounded-[40px] p-8 md:p-16 overflow-hidden text-white"
+        className="relative bg-[#0f172a] dark:bg-slate-900 rounded-[40px] p-8 md:p-16 overflow-hidden text-white"
       >
         <div className="flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
           <div className="max-w-lg space-y-6">
@@ -62,14 +62,16 @@ const WhatSay = () => {
               className="text-2xl md:text-3xl font-bold leading-tight"
             >
               The Future of Your <br />
-              <span className="text-blue-400">Health Begins Today</span>
+              <span className="text-blue-400 dark:text-blue-300">
+                Health Begins Today
+              </span>
             </motion.h2>
 
             <motion.p
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-gray-400 text-sm md:text-base leading-relaxed"
+              className="text-gray-400 dark:text-gray-500 text-sm md:text-base leading-relaxed"
             >
               Join the most advanced medical ecosystem today and gain priority
               access to the world&apos;s leading specialists with zero friction.
@@ -132,10 +134,10 @@ const WhatSay = () => {
           transition={{ duration: 0.6 }}
           className="max-w-2xl mx-auto mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
             What Our Patients Say
           </h2>
-          <p className="text-gray-500">
+          <p className="text-gray-500 dark:text-gray-400">
             Trusted by thousands for our unwavering commitment to precision and
             compassionate care.
           </p>
@@ -153,15 +155,17 @@ const WhatSay = () => {
               key={review.id}
               variants={fadeInUp}
               whileHover={{ y: -10 }}
-              className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 text-left flex flex-col justify-between h-full cursor-default"
+              className="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-slate-700 hover:shadow-xl transition-all duration-300 text-left flex flex-col justify-between h-full cursor-default"
             >
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center font-bold text-sm">
                     {review.initials}
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-800">{review.name}</h4>
+                    <h4 className="font-bold text-gray-800 dark:text-white">
+                      {review.name}
+                    </h4>
                     <div className="flex gap-1 text-yellow-400 text-xs">
                       {[...Array(5)].map((_, i) => (
                         <FaStar key={i} />
@@ -169,11 +173,11 @@ const WhatSay = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-600 leading-relaxed italic mb-6">
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed italic mb-6">
                   {review.text}
                 </p>
               </div>
-              <div className="flex items-center gap-2 text-green-600 font-bold text-[10px] uppercase tracking-wider">
+              <div className="flex items-center gap-2 text-green-600 dark:text-green-400 font-bold text-[10px] uppercase tracking-wider">
                 <FaCheckCircle />
                 <span>Verified Patient</span>
               </div>

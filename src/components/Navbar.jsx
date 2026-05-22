@@ -11,6 +11,7 @@ import { RxCross2 } from 'react-icons/rx';
 import { authClient } from '@/lib/auth-client';
 import { Avatar } from '@heroui/react';
 import { useRouter } from 'next/navigation';
+import Toggling from './Toggling';
 
 const subscribe = () => () => {};
 const getClientSnapshot = () => true;
@@ -33,7 +34,7 @@ const Navbar = () => {
   const showAuthState = mounted && !isPending;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-sky-100/80 bg-white/90 py-4 shadow-sm backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-sky-100/80 bg-white/90 py-4 shadow-sm backdrop-blur-xl dark:border-slate-700/80 dark:bg-slate-900/90">
       <nav className="mx-auto flex w-10/12 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image
@@ -43,10 +44,12 @@ const Navbar = () => {
             height={48}
           />
 
-          <h1 className="text-lg font-bold text-slate-900 md:text-2xl">
+          <h1 className="text-lg font-bold text-slate-900 dark:text-white md:text-2xl">
             MedPrecision
           </h1>
         </Link>
+
+        <Toggling />
 
         <ul className="hidden items-center gap-6 md:flex">
           <li>
@@ -64,7 +67,7 @@ const Navbar = () => {
 
         <div className="hidden min-w-44 items-center justify-end gap-4 md:flex">
           {!showAuthState ? (
-            <div className="h-10 w-28 rounded-full bg-sky-100" />
+            <div className="h-10 w-28 rounded-full bg-sky-100 dark:bg-slate-800" />
           ) : users ? (
             <div className="flex items-center gap-2">
               <Avatar>
@@ -88,7 +91,7 @@ const Navbar = () => {
             <div className="flex items-center gap-2">
               <Link
                 href="/login"
-                className="rounded-full px-4 py-2 font-semibold text-slate-600 transition-all duration-300 hover:bg-slate-100"
+                className="rounded-full px-4 py-2 font-semibold text-slate-600 transition-all duration-300 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
               >
                 Login
               </Link>
@@ -106,12 +109,12 @@ const Navbar = () => {
         <div className="flex items-center md:hidden">
           {isActive ? (
             <RxCross2
-              className="cursor-pointer text-3xl text-slate-700"
+              className="cursor-pointer text-3xl text-slate-700 dark:text-slate-200"
               onClick={() => setIsActive(false)}
             />
           ) : (
             <MdMenu
-              className="cursor-pointer text-3xl text-slate-700"
+              className="cursor-pointer text-3xl text-slate-700 dark:text-slate-200"
               onClick={() => setIsActive(true)}
             />
           )}

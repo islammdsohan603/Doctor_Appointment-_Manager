@@ -38,7 +38,7 @@ const Menubar = ({ setIsActive }) => {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="absolute left-0 top-full z-40 flex w-full flex-col items-center gap-6 bg-white/95 py-6 shadow-lg backdrop-blur-xl md:hidden"
+      className="absolute left-0 top-full z-40 flex w-full flex-col items-center gap-6 bg-white/95 py-6 shadow-lg backdrop-blur-xl dark:bg-slate-900/95 dark:shadow-slate-700 md:hidden"
     >
       <ul className="flex flex-col items-center gap-6">
         {menuItems.map((item, index) => (
@@ -75,7 +75,7 @@ const Menubar = ({ setIsActive }) => {
           <div>
             <Link
               href={`/login`}
-              className="px-4 py-2 rounded-full cursor-pointer text-gray-600 font-semibold transition-all duration-300 hover:bg-slate-200"
+              className="px-4 py-2 rounded-full cursor-pointer text-gray-600 dark:text-gray-300 font-semibold transition-all duration-300 hover:bg-slate-200 dark:hover:bg-slate-700"
             >
               Login
             </Link>

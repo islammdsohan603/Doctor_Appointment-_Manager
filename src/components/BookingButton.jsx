@@ -48,7 +48,7 @@ const BookingButton = ({ data }) => {
         {/* Modal */}
         <Modal.Backdrop className="backdrop-blur-sm bg-black/40">
           <Modal.Container placement="center">
-            <Modal.Dialog className="w-full max-w-2xl rounded-[2rem] overflow-hidden border border-white/20 shadow-2xl bg-white">
+            <Modal.Dialog className="w-full max-w-2xl rounded-[2rem] overflow-hidden border border-white/20 shadow-2xl bg-white dark:bg-slate-900">
               <Modal.CloseTrigger />
 
               {/* Header */}
@@ -75,19 +75,21 @@ const BookingButton = ({ data }) => {
               </Modal.Header>
 
               {/* Body */}
-              <Modal.Body className="p-8 bg-gray-50">
+              <Modal.Body className="p-8 bg-gray-50 dark:bg-slate-950">
                 {/* Doctor Info */}
-                <div className="bg-linear-to-r from-cyan-50 to-blue-50 border border-cyan-100 rounded-2xl p-5 mb-6">
-                  <h3 className="text-lg font-bold text-gray-800">
+                <div className="bg-linear-to-r from-cyan-50 to-blue-50 border border-cyan-100 rounded-2xl p-5 mb-6 dark:bg-slate-900 dark:border-slate-700">
+                  <h3 className="text-lg font-bold text-gray-800 dark:text-white">
                     {data.name}
                   </h3>
 
-                  <p className="text-blue-600 font-medium">{data.specialty}</p>
+                  <p className="text-blue-600 font-medium dark:text-blue-400">
+                    {data.specialty}
+                  </p>
                 </div>
 
                 <Surface
                   variant="default"
-                  className="rounded-2xl bg-white shadow-sm border border-gray-100"
+                  className="rounded-2xl bg-white shadow-sm border border-gray-100 dark:bg-slate-900 dark:border-slate-700"
                 >
                   <form
                     onSubmit={handleBookingAppiontment}
@@ -95,7 +97,7 @@ const BookingButton = ({ data }) => {
                   >
                     {/* Email */}
                     <div className="w-full">
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
+                      <Label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-slate-200">
                         Email Address
                       </Label>
 
@@ -106,13 +108,13 @@ const BookingButton = ({ data }) => {
                         defaultValue={users?.email || ''}
                         readOnly={Boolean(users?.email)}
                         placeholder="Enter your email"
-                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 outline-none focus:border-blue-500 read-only:bg-gray-100"
+                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-gray-900 outline-none focus:border-blue-500 placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500 dark:read-only:bg-slate-800"
                       />
                     </div>
 
                     {/* Patient Name */}
                     <div className="w-full">
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
+                      <Label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-slate-200">
                         Patient Name
                       </Label>
 
@@ -122,7 +124,7 @@ const BookingButton = ({ data }) => {
                         type="text"
                         defaultValue={users?.name || ''}
                         placeholder="Full name"
-                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 outline-none focus:border-blue-500"
+                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-gray-900 outline-none focus:border-blue-500 placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500"
                       />
                     </div>
 
@@ -137,18 +139,19 @@ const BookingButton = ({ data }) => {
                         type="tel"
                         placeholder="+8801XXXXXXXXX"
                         className="rounded-xl"
+                        inputClassName="dark:bg-slate-900 dark:text-white dark:border-slate-700 dark:placeholder:text-slate-500"
                       />
                     </TextField>
 
                     {/* Gender */}
                     <div>
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
+                      <Label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-slate-200">
                         Gender
                       </Label>
 
                       <select
                         name="gender"
-                        className="w-full h-11 px-4 rounded-xl border border-gray-200 outline-none focus:border-blue-500 bg-white"
+                        className="w-full h-11 px-4 rounded-xl border border-gray-200 bg-white text-gray-900 outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
                       >
                         <option>Male</option>
                         <option>Female</option>
@@ -158,7 +161,7 @@ const BookingButton = ({ data }) => {
 
                     {/* Date */}
                     <TextField className="w-full">
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
+                      <Label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-slate-200">
                         Appointment Date
                       </Label>
 
@@ -166,12 +169,13 @@ const BookingButton = ({ data }) => {
                         name="appointmentDate"
                         type="date"
                         className="rounded-xl"
+                        inputClassName="dark:bg-slate-900 dark:text-white dark:border-slate-700"
                       />
                     </TextField>
 
                     {/* Time */}
                     <TextField className="w-full">
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
+                      <Label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-slate-200">
                         Appointment Time
                       </Label>
 
@@ -179,12 +183,13 @@ const BookingButton = ({ data }) => {
                         name="appointmentTime"
                         type="time"
                         className="rounded-xl"
+                        inputClassName="dark:bg-slate-900 dark:text-white dark:border-slate-700"
                       />
                     </TextField>
 
                     {/* Reason */}
                     <div className="md:col-span-2">
-                      <Label className="mb-2 block text-sm font-semibold text-gray-700">
+                      <Label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-slate-200">
                         Reason for Visit
                       </Label>
 
@@ -192,7 +197,7 @@ const BookingButton = ({ data }) => {
                         name="reason"
                         rows={4}
                         placeholder="Describe your problem..."
-                        className="w-full rounded-2xl border border-gray-200 p-4 outline-none focus:border-blue-500 resize-none"
+                        className="w-full rounded-2xl border border-gray-200 bg-white p-4 text-gray-900 outline-none focus:border-blue-500 resize-none placeholder:text-slate-400 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500"
                       ></textarea>
                     </div>
 

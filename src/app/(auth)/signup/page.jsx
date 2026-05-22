@@ -40,8 +40,8 @@ const SignUpPage = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-linear-to-br from-cyan-50 via-white to-blue-100 px-4 py-10">
-      <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 bg-white rounded-[2.5rem] overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.08)]">
+    <section className="min-h-screen flex items-center justify-center bg-linear-to-br from-cyan-50 via-white to-blue-100 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900/30 px-4 py-10">
+      <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 bg-white dark:bg-slate-800 rounded-[2.5rem] overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.08)] dark:shadow-[0_20px_80px_rgba(0,0,0,0.3)]">
         {/* LEFT SIDE */}
         <div className="hidden lg:flex flex-col justify-center bg-linear-to-br from-cyan-500 to-blue-600 p-12 text-white relative overflow-hidden">
           {/* Glow */}
